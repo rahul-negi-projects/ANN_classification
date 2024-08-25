@@ -33,15 +33,15 @@ active_member = st.selectbox('active_member',[0,1])
 estimated_salary = st.number_input('estimated_salary')
 
 input_data = pd.DataFrame({
-    credit_score    : [credit_score],
-    gender          : [label_encoder.transform([gender])[0]],
-    age             : [age],
-    tenure          : [tenure],
-    balance         : [balance],
-    products_number : [products_number],
-    credit_card     : [credit_card],
-    active_member   : [active_member],
-    estimated_salary: [estimated_salary]
+    "credit_score"    : [credit_score],
+    "gender"          : [label_encoder.transform([gender])[0]],
+    "age"             : [age],
+    "tenure"          : [tenure],
+    "balance"         : [balance],
+    "products_number" : [products_number],
+    "credit_card"     : [credit_card],
+    "active_member"   : [active_member],
+    "estimated_salary": [estimated_salary]
 })
 
 st.write("Here is the dataframe")
@@ -54,8 +54,6 @@ st.write(ohe_df)
 
 conct_data = pd.concat([input_data,ohe_df], axis=1)
 input_sclaed = scaler.transform(conct_data)
-
-
 
 prediction = model.predict(input_sclaed)
 st.write(f'churn probability: {prediction[0][0]*100:2f}')
